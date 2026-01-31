@@ -107,7 +107,7 @@
 <h2>On-Device Rules</h2>
 <p>Your behavioral rules are the core of Agent Constitution — and they <strong>never leave your device</strong>:</p>
 <ul>
-  <li>Rules are stored locally in the app's sandboxed storage</li>
+  <li>Rules are stored locally on your device</li>
   <li>Rule definitions are <strong>not uploaded</strong> to the relay or any server</li>
   <li>When an agent performs a constitution check, the app evaluates the action against your rules locally</li>
   <li>Only the match result (approved/denied + rule name) is sent back through the relay</li>
@@ -130,11 +130,11 @@
 <h2>HMAC-SHA256 Signed Relay</h2>
 <p>Every request to the relay is signed with <strong>HMAC-SHA256</strong>. The signing payload includes timestamps and nonces to prevent replay attacks. The relay performs timing-safe comparison on every signature and rejects:</p>
 <ul>
-  <li>Requests with missing or invalid signatures</li>
+  <li>Requests with invalid signatures</li>
   <li>Requests with expired timestamps (clock skew tolerance is tight)</li>
   <li>Requests with previously-seen nonces</li>
-  <li>Any unsigned request — period</li>
 </ul>
+<p>HMAC signing is supported on all relay endpoints. Agents that include signing headers get full replay protection and integrity verification.</p>
 
 <!-- ── Push Notification Validation ────────────────────── -->
 <h2>Push Notification Validation</h2>
