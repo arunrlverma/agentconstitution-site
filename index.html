@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Constitution — Your rules. Your agent. Your call.</title>
+  <meta name="description" content="Agent Constitution lets you define behavioral rules for your AI agents. Before any restricted action, your agent asks for approval via push notification. You decide — from your iPhone.">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────── -->
+<nav>
+  <div class="container">
+    <a href="/" class="nav-brand">
+      <img src="img/icon.svg" alt="Agent Constitution">
+      Agent Constitution
+    </a>
+    <div class="nav-links">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#rules">Rules</a>
+      <a href="#features">Features</a>
+      <a href="#audit-trail">Audit Trail</a>
+      <a href="/security.html">Security</a>
+      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+      <a href="#download" class="nav-cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <h1>Your rules. <span>Your agent.</span><br>Your call.</h1>
+    <p>AI agents can send emails, make purchases, post on social media, and control your home. Agent Constitution lets you decide what they can and can't do — with approval from your iPhone for every restricted action.</p>
+    <div class="hero-buttons">
+      <a href="#download" class="btn btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Download Free
+      </a>
+      <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View Source
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ─────────────────────────────────────── -->
+<section id="how-it-works">
+  <div class="container section-center">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">You set the boundaries. Your agent respects them.</h2>
+    <p class="section-desc">Define rules on your iPhone. When your AI agent attempts a restricted action, you get a push notification. Review the action, approve or deny, and the agent proceeds only with your permission.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">📋</div>
+        <h3>Define Rules</h3>
+        <p>Set behavioral rules on your iPhone — what actions require your approval, across 6 categories.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">🤖</div>
+        <h3>Agent Acts</h3>
+        <p>Your AI agent attempts an action — sending an email, making a purchase, deploying code.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon" style="background: var(--accent-glow); border-color: var(--accent);">🔔</div>
+        <h3>Rule Triggered</h3>
+        <p>The action matches a rule. A push notification is sent to your iPhone with full details.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">✅</div>
+        <h3>You Decide</h3>
+        <p>Review what the agent wants to do. Approve or deny. The agent proceeds only if you say yes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Architecture ─────────────────────────────────────── -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="arch-diagram">
+      <div class="arch-flow">
+        <div class="arch-node">
+          <h4>📱 iPhone App</h4>
+          <p>Rules · Approval · Audit Trail</p>
+        </div>
+        <div class="arch-arrow">⟶</div>
+        <div class="arch-node relay">
+          <h4>📬 Relay</h4>
+          <p>Stateless HTTP · HMAC Signed</p>
+        </div>
+        <div class="arch-arrow">⟶</div>
+        <div class="arch-node">
+          <h4>🤖 AI Agent</h4>
+          <p>Any agent · Any framework</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Rule Categories ─────────────────────────────────── -->
+<section id="rules">
+  <div class="container section-center">
+    <p class="section-label">Rule Categories</p>
+    <h2 class="section-title">Six categories. Total control.</h2>
+    <p class="section-desc">Pre-built templates for the most common agent actions, plus custom rules for anything else. Define your boundaries in plain English.</p>
+
+    <div class="rules-categories">
+      <div class="rule-category">
+        <div class="rule-category-icon">📧</div>
+        <h4>Communication</h4>
+        <ul>
+          <li>Send work emails</li>
+          <li>Post to Slack channels</li>
+          <li>Send LinkedIn messages</li>
+          <li>Send iMessages</li>
+        </ul>
+      </div>
+      <div class="rule-category">
+        <div class="rule-category-icon">💰</div>
+        <h4>Financial</h4>
+        <ul>
+          <li>Make purchases</li>
+          <li>Share payment info</li>
+          <li>Authorize subscriptions</li>
+          <li>Transfer funds</li>
+        </ul>
+      </div>
+      <div class="rule-category">
+        <div class="rule-category-icon">📱</div>
+        <h4>Social Media</h4>
+        <ul>
+          <li>Post to social media</li>
+          <li>Leave public comments</li>
+          <li>Like or share content</li>
+          <li>Follow accounts</li>
+        </ul>
+      </div>
+      <div class="rule-category">
+        <div class="rule-category-icon">🏠</div>
+        <h4>Smart Home</h4>
+        <ul>
+          <li>Change thermostat</li>
+          <li>Lock or unlock doors</li>
+          <li>Control lighting</li>
+          <li>Arm/disarm security</li>
+        </ul>
+      </div>
+      <div class="rule-category">
+        <div class="rule-category-icon">💻</div>
+        <h4>Development</h4>
+        <ul>
+          <li>Push to main branch</li>
+          <li>Deploy to production</li>
+          <li>Run destructive commands</li>
+          <li>Modify infrastructure</li>
+        </ul>
+      </div>
+      <div class="rule-category">
+        <div class="rule-category-icon">📁</div>
+        <h4>Data</h4>
+        <ul>
+          <li>Share files externally</li>
+          <li>Delete files permanently</li>
+          <li>Export sensitive data</li>
+          <li>Modify access permissions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ─────────────────────────────────────────── -->
+<section id="features">
+  <div class="container">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Your guardrails. Not the AI company's.</h2>
+    <p class="section-desc">Agent Constitution puts you in control — define your own rules, get notified in real time, and keep a complete audit trail of every decision.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>User-Defined Rules</h3>
+        <p>You define the behavioral boundaries — not the AI company. 15 prebuilt templates across 6 categories, plus custom rules in plain English.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Push Notifications</h3>
+        <p>When a rule is triggered, you get an instant push notification on your iPhone. See exactly what the agent wants to do, then approve or deny.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📜</div>
+        <h3>Full Audit Trail</h3>
+        <p>Every rule check, every approval, every denial — logged on-device in the iOS Keychain. Complete history of what your agent did and didn't do.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>AI Rule Suggestions</h3>
+        <p>Describe your boundaries in natural language and get intelligent rule suggestions. "Don't let my agent post anything political" → rules generated.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Pure HTTP API</h3>
+        <p>No SDKs, no vendor lock-in. Any AI agent framework can check rules with a single HTTP call. Works from Python, Node, bash, or any language.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Open Source</h3>
+        <p>The relay infrastructure is fully open source. Self-host, audit, fork. Your rules, your infrastructure, your control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Audit Trail ──────────────────────────────────────── -->
+<section id="audit-trail">
+  <div class="container section-center">
+    <p class="section-label">Audit Trail</p>
+    <h2 class="section-title">Every decision. Permanently recorded.</h2>
+    <p class="section-desc">Agent Constitution keeps a complete, tamper-proof audit log of every rule check, approval, and denial — stored securely on your device.</p>
+
+    <div class="audit-features">
+      <div class="audit-item">
+        <div class="icon">📝</div>
+        <div>
+          <h4>Action Logged</h4>
+          <p>What the agent attempted — full action description, category, and timestamp</p>
+        </div>
+      </div>
+      <div class="audit-item">
+        <div class="icon">⚖️</div>
+        <div>
+          <h4>Decision Recorded</h4>
+          <p>Whether you approved or denied, and which rule was triggered</p>
+        </div>
+      </div>
+      <div class="audit-item">
+        <div class="icon">🔐</div>
+        <div>
+          <h4>Keychain Secured</h4>
+          <p>Audit logs stored in iOS Keychain — encrypted, on-device, not synced to cloud</p>
+        </div>
+      </div>
+      <div class="audit-item">
+        <div class="icon">📊</div>
+        <div>
+          <h4>Browse &amp; Search</h4>
+          <p>Filter by category, date, or decision. See patterns in your agent's behavior</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Code Example ─────────────────────────────────────── -->
+<section id="developers">
+  <div class="container">
+    <div class="code-section">
+      <div>
+        <p class="section-label">For Developers</p>
+        <h2 class="section-title">One API call. Before every action.</h2>
+        <p class="section-desc">Your agent checks the constitution before performing restricted actions. If a rule applies, the user gets a push notification and the agent waits for approval. Standard HTTP — no SDK required.</p>
+        <div class="clawdhub-note">
+          <p>📦 Install the agent skill: <code>clawdhub install constitution</code></p>
+        </div>
+        <br>
+        <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">Read the Docs →</a>
+      </div>
+      <div class="code-block">
+<pre><span class="comment"># Check the constitution before acting</span>
+<span class="cmd">curl</span> -X POST \
+  -H <span class="string">"Authorization: Bearer $SECRET"</span> \
+  -d <span class="string">'{
+    "type": "constitution_check",
+    "action": "send_email",
+    "category": "communication",
+    "description": "Send quarterly report to team@company.com",
+    "details": {
+      "to": "team@company.com",
+      "subject": "Q4 Report"
+    }
+  }'</span> \
+  <span class="string">"$RELAY/channel/$CH/push?role=gateway"</span>
+
+<span class="comment"># User gets push notification...</span>
+<span class="comment"># They review and approve/deny...</span>
+
+<span class="comment"># Pull the decision</span>
+<span class="cmd">curl</span> -H <span class="string">"Authorization: Bearer $SECRET"</span> \
+  <span class="string">"$RELAY/channel/$CH/pull?role=gateway&wait=30"</span>
+
+<span class="comment"># → {"decision": "approved", "rule": "work_emails"}</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────── -->
+<section class="cta-section" id="download">
+  <div class="container">
+    <h2>Set the rules. <span style="color: var(--accent);">Control the AI.</span></h2>
+    <p>Download Agent Constitution, define your boundaries, and take control<br>of what your AI agent can and can't do.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary" id="appstore-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store — Coming Soon
+      </a>
+      <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <span class="footer-copy">© 2026 Arun Verma. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/support.html">Support</a>
+      <a href="/security.html">Security</a>
+      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

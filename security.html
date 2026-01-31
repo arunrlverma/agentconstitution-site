@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Architecture — Agent Constitution</title>
+  <meta name="description" content="How Agent Constitution protects your rules, approvals, and audit trail. On-device rules, Keychain audit logs, HMAC relay, push notification validation.">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-brand">
+      <img src="img/icon.svg" alt="Agent Constitution">
+      Agent Constitution
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/security.html">Security</a>
+      <a href="/support.html">Support</a>
+      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="legal">
+
+<h1>Security Architecture</h1>
+<p class="updated">How Agent Constitution protects your rules, decisions, and audit trail at every layer.</p>
+
+<!-- ── Overview ─────────────────────────────────────────── -->
+<div class="security-hero">
+  <div class="security-hero-inner">
+    <div class="security-stat">
+      <span class="security-stat-value">0</span>
+      <span class="security-stat-label">Cloud Storage</span>
+    </div>
+    <div class="security-stat">
+      <span class="security-stat-value">On-Device</span>
+      <span class="security-stat-label">Rules & Audit</span>
+    </div>
+    <div class="security-stat">
+      <span class="security-stat-value">HMAC</span>
+      <span class="security-stat-label">Signed Relay</span>
+    </div>
+    <div class="security-stat">
+      <span class="security-stat-value">OSS</span>
+      <span class="security-stat-label">Fully Auditable</span>
+    </div>
+  </div>
+</div>
+
+<h2>Architecture Overview</h2>
+<p>Agent Constitution is built on a <strong>trust-no-one</strong> architecture. Your behavioral rules live on your iPhone — never on a server. The relay is a stateless pipe that passes constitution check requests and approval/denial responses between your agent and your phone. It stores nothing. Your audit trail is encrypted in the iOS Keychain. No database, no cloud sync, no data leaving your device without your explicit approval.</p>
+
+<!-- ── End-to-End Flow ─────────────────────────────────── -->
+<h2>Constitution Check Flow</h2>
+<p>Every agent action follows this path when a rule applies:</p>
+
+<div class="security-flow">
+  <div class="security-flow-step">
+    <div class="security-flow-icon">🤖</div>
+    <div class="security-flow-text">
+      <strong>Agent requests constitution check</strong>
+      <span>HMAC-signed HTTP POST describing the intended action</span>
+    </div>
+  </div>
+  <div class="security-flow-arrow">↓</div>
+  <div class="security-flow-step">
+    <div class="security-flow-icon">📬</div>
+    <div class="security-flow-text">
+      <strong>Relay queues &amp; pushes</strong>
+      <span>In-memory queue + APNs push notification to your iPhone</span>
+    </div>
+  </div>
+  <div class="security-flow-arrow">↓</div>
+  <div class="security-flow-step">
+    <div class="security-flow-icon">📱</div>
+    <div class="security-flow-text">
+      <strong>iPhone receives notification</strong>
+      <span>You see exactly what action the agent wants to take</span>
+    </div>
+  </div>
+  <div class="security-flow-arrow">↓</div>
+  <div class="security-flow-step">
+    <div class="security-flow-icon" style="background: var(--accent-glow); border-color: var(--accent);">⚖️</div>
+    <div class="security-flow-text">
+      <strong>Rule matched → You decide</strong>
+      <span>Review the action, approve or deny. Decision logged to audit trail.</span>
+    </div>
+  </div>
+  <div class="security-flow-arrow">↓</div>
+  <div class="security-flow-step">
+    <div class="security-flow-icon">✅</div>
+    <div class="security-flow-text">
+      <strong>Decision flows back → auto-expires</strong>
+      <span>Approval/denial available for 60 seconds, then permanently gone from relay</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── On-Device Rules ─────────────────────────────────── -->
+<h2>On-Device Rules</h2>
+<p>Your behavioral rules are the core of Agent Constitution — and they <strong>never leave your device</strong>:</p>
+<ul>
+  <li>Rules are stored locally in the app's sandboxed storage</li>
+  <li>Rule definitions are <strong>not uploaded</strong> to the relay or any server</li>
+  <li>When an agent performs a constitution check, the app evaluates the action against your rules locally</li>
+  <li>Only the match result (approved/denied + rule name) is sent back through the relay</li>
+  <li>Your complete rule set is <strong>never exposed</strong> to the agent or the relay</li>
+</ul>
+
+<!-- ── Keychain Audit Log ──────────────────────────────── -->
+<h2>Keychain Audit Log</h2>
+<p>Every constitution check is permanently recorded in a tamper-resistant audit trail:</p>
+<ul>
+  <li>Audit entries are stored in the <strong>iOS Keychain</strong> with <code>kSecAttrAccessibleWhenUnlockedThisDeviceOnly</code> protection</li>
+  <li><strong>Not synced</strong> to iCloud Keychain — audit data stays on your physical device</li>
+  <li><strong>Not included</strong> in device backups (iTunes or iCloud)</li>
+  <li>Protected by the Secure Enclave on devices that support it</li>
+  <li>Each entry records: timestamp, action description, category, matched rule, decision (approved/denied)</li>
+  <li>The audit trail cannot be modified by the agent or the relay — only you can clear it from the app</li>
+</ul>
+
+<!-- ── HMAC Signing ────────────────────────────────────── -->
+<h2>HMAC-SHA256 Signed Relay</h2>
+<p>Every request to the relay is signed with <strong>HMAC-SHA256</strong>. The signing payload includes timestamps and nonces to prevent replay attacks. The relay performs timing-safe comparison on every signature and rejects:</p>
+<ul>
+  <li>Requests with missing or invalid signatures</li>
+  <li>Requests with expired timestamps (clock skew tolerance is tight)</li>
+  <li>Requests with previously-seen nonces</li>
+  <li>Any unsigned request — period</li>
+</ul>
+
+<!-- ── Push Notification Validation ────────────────────── -->
+<h2>Push Notification Validation</h2>
+<p>Constitution check requests delivered via APNs are validated before being shown to you:</p>
+<ul>
+  <li><strong>Payload validation</strong> — action type, category, description, and request ID are all validated against strict format rules</li>
+  <li><strong>Invalid payloads are silently rejected</strong> — malformed push notifications cannot trigger the approval sheet</li>
+  <li><strong>APNs JWT rotation</strong> — authentication tokens for Apple Push Notification service are rotated every 15 minutes</li>
+  <li><strong>No sensitive data in push payload</strong> — the notification contains only a request ID; the full action details are fetched over the secure channel</li>
+</ul>
+
+<!-- ── Token Security ──────────────────────────────────── -->
+<h2>Token Security</h2>
+<p>Authentication tokens are protected at every layer:</p>
+<ul>
+  <li><strong>SHA-256 hashed storage</strong> — auth tokens are never stored in plaintext on the relay. Only the hash is kept in memory for comparison.</li>
+  <li><strong>Timing-safe comparison</strong> — all token and signature checks use constant-time comparison to prevent timing side-channel attacks.</li>
+  <li><strong>Per-token rate limiting</strong> — dual-layer rate limiting by both IP address and token hash prevents abuse even from distributed sources.</li>
+</ul>
+
+<!-- ── Relay Statelessness ─────────────────────────────── -->
+<h2>Relay Statelessness</h2>
+<p>The relay server is <strong>aggressively stateless</strong>:</p>
+<ul>
+  <li><strong>In-memory message queues</strong> — no database, no file system, no persistence layer of any kind</li>
+  <li><strong>Server restart = clean slate</strong> — all queued messages are lost on restart, by design</li>
+  <li><strong>No content logs</strong> — the relay never logs the content of constitution checks or decisions</li>
+  <li><strong>No user accounts</strong> — there are no profiles, no registration, no stored credentials on disk</li>
+  <li>The relay's only job: receive a check request, hold it in RAM briefly, deliver the decision, delete it</li>
+</ul>
+
+<!-- ── Channel Isolation ───────────────────────────────── -->
+<h2>Channel Isolation</h2>
+<p>Each device-agent pair communicates through a <strong>unique channel</strong>:</p>
+<ul>
+  <li>Every channel has its own UUID and authentication token</li>
+  <li>Channels are cryptographically isolated — there is no mechanism to read another channel's messages</li>
+  <li>Auth tokens are generated during pairing and stored in the iOS Keychain</li>
+  <li>Compromising one channel does not affect any other channel on the relay</li>
+  <li>You can revoke a channel instantly by unpairing from the app</li>
+</ul>
+
+<!-- ── Self-Hosting ────────────────────────────────────── -->
+<h2>Self-Hosting</h2>
+<p>The relay is <strong>fully open source</strong>. You don't have to trust our hosted instance — you can run your own:</p>
+<ul>
+  <li>Deploy to any cloud provider (Fly.io, Railway, AWS, DigitalOcean, etc.)</li>
+  <li>Run on your local machine or home server</li>
+  <li>Audit every line of code: <a href="https://github.com/arunrlverma/relay4agents" target="_blank">github.com/arunrlverma/relay4agents</a></li>
+  <li>Point Agent Constitution at your custom relay URL during pairing</li>
+  <li>Full control over your infrastructure, your rules</li>
+</ul>
+
+<!-- ── Summary ─────────────────────────────────────────── -->
+<h2>Summary</h2>
+<p>Agent Constitution is designed around a single principle: <strong>you own your rules, and you own every decision.</strong> Your behavioral rules never leave your phone. Your audit trail is encrypted on-device. The relay is a stateless pipe that forgets everything. And every request is cryptographically signed.</p>
+<p>Questions about our security architecture? Email <a href="mailto:arun@agentconstitution.com">arun@agentconstitution.com</a>. Security vulnerabilities should be reported privately — <strong>do not open a public issue</strong>.</p>
+
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <span class="footer-copy">© 2026 Arun Verma. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/support.html">Support</a>
+      <a href="/security.html">Security</a>
+      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

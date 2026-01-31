@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dark shield -->
+  <path d="M32 4 L56 16 V34 C56 48 44 58 32 62 C20 58 8 48 8 34 V16 Z" fill="#12121a" stroke="#2a2a3a" stroke-width="1.5"/>
+  <!-- Constitution scroll / gavel -->
+  <g stroke="#6C63FF" stroke-width="3" stroke-linecap="round" fill="none">
+    <rect x="22" y="18" width="20" height="28" rx="2" stroke-width="2"/>
+    <line x1="26" y1="26" x2="38" y2="26"/>
+    <line x1="26" y1="32" x2="38" y2="32"/>
+    <line x1="26" y1="38" x2="34" y2="38"/>
+  </g>
+  <!-- Checkmark -->
+  <polyline points="28,42 32,46 40,34" stroke="#6C63FF" stroke-width="0" fill="none"/>
+</svg>
