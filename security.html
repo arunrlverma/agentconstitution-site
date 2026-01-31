@@ -156,14 +156,14 @@
 </ul>
 
 <!-- ── Relay Statelessness ─────────────────────────────── -->
-<h2>Relay Statelessness</h2>
-<p>The relay server is <strong>aggressively stateless</strong>:</p>
+<h2>Relay Architecture</h2>
+<p>The relay server is designed to be <strong>minimal and ephemeral</strong>:</p>
 <ul>
-  <li><strong>In-memory message queues</strong> — no database, no file system, no persistence layer of any kind</li>
-  <li><strong>Server restart = clean slate</strong> — all queued messages are lost on restart, by design</li>
+  <li><strong>Short-lived message queues</strong> — messages expire within minutes and are automatically purged</li>
+  <li><strong>Optional persistent storage</strong> — when deployed with Redis, channel state survives restarts. Without Redis, the relay falls back to in-memory storage where a restart clears all state.</li>
   <li><strong>No content logs</strong> — the relay never logs the content of constitution checks or decisions</li>
-  <li><strong>No user accounts</strong> — there are no profiles, no registration, no stored credentials on disk</li>
-  <li>The relay's only job: receive a check request, hold it in RAM briefly, deliver the decision, delete it</li>
+  <li><strong>No user accounts</strong> — there are no profiles, no registration, no stored user data</li>
+  <li>The relay's only job: receive a check request, hold it briefly, deliver the decision, delete it</li>
 </ul>
 
 <!-- ── Channel Isolation ───────────────────────────────── -->
