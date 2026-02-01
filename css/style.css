@@ -626,9 +626,9 @@ footer .container {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 10, 15, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #0a0a0f;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
