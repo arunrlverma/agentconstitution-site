@@ -34,7 +34,7 @@
 
 <h2>The Short Version</h2>
 <p><strong>Your rules stay on your device. Your audit logs stay on your device. We don't collect, store, or sell your data.</strong></p>
-<p>Agent Constitution is designed so that your behavioral rules and approval history never leave your device. The relay is a stateless pipe — it passes messages between your agent and your phone, then forgets everything.</p>
+<p>Agent Constitution is designed so that your behavioral rules and approval history never leave your device. The relay is an ephemeral pipe — it passes messages between your agent and your phone, then forgets them. Channel pairing state can optionally persist in Redis.</p>
 
 <h2>What Data the App Accesses</h2>
 <p>The Agent Constitution iOS app may access the following data on your device, <strong>only with your permission</strong>:</p>
@@ -56,11 +56,11 @@
 
 <h3>On the Relay Server</h3>
 <ul>
-  <li>The relay server is a <strong>stateless HTTP queue</strong>. It holds messages in memory only.</li>
-  <li><strong>Constitution check requests</strong> (action descriptions from your agent) expire after 5 minutes if not processed.</li>
+  <li>The relay server is a <strong>minimal HTTP queue</strong>. When deployed with Redis, channel state persists across restarts. Without Redis, it falls back to in-memory storage.</li>
+  <li><strong>Constitution check requests</strong> (action descriptions from your agent) expire after 30 minutes if not processed.</li>
   <li><strong>Approval/denial responses</strong> expire after <strong>60 seconds</strong> and are permanently deleted from memory.</li>
   <li>The relay has <strong>no database, no disk storage, no logs of message content</strong>.</li>
-  <li>When the relay server restarts, all in-memory data is lost. This is by design.</li>
+  <li>Message queues are ephemeral — constitution check requests and responses auto-expire after processing. Channel pairing state persists in Redis when configured.</li>
 </ul>
 
 <h3>On Third-Party Servers</h3>
