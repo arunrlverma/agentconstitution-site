@@ -613,6 +613,28 @@ footer .container {
 
 /* ── Responsive ──────────────────────────────────────────── */
 
+/* Ensure nav-links.open doesn't affect desktop layout */
+@media (min-width: 769px) {
+  .nav-links.open {
+    display: flex !important;
+    position: static !important;
+    height: auto !important;
+    min-height: auto !important;
+    background: transparent !important;
+    flex-direction: row !important;
+    padding-top: 0 !important;
+    z-index: auto !important;
+  }
+  .nav-links.open a {
+    font-size: 14px !important;
+    padding: 0 !important;
+    width: auto !important;
+    text-align: left !important;
+    border-bottom: none !important;
+    color: var(--text-muted) !important;
+  }
+}
+
 @media (max-width: 768px) {
   .code-section { grid-template-columns: 1fr; }
   .flow-arrow { display: none; }
