@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Constitution - Screenshot Gallery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  h1 span { color: #D32F2F; }
+
+  .subtitle {
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .gallery {
+    display: flex;
+    gap: 40px;
+    padding: 0 60px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
+  }
+
+  .gallery::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .gallery::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+  }
+
+  .gallery::-webkit-scrollbar-thumb {
+    background: rgba(211, 47, 47, 0.4);
+    border-radius: 3px;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .gallery-item img {
+    width: 280px;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item img:hover {
+    transform: scale(1.02);
+  }
+
+  .caption {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .caption .num {
+    color: #D32F2F;
+    font-weight: 600;
+  }
+
+  .scroll-hint {
+    color: rgba(255,255,255,0.15);
+    font-size: 11px;
+    margin-top: 30px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>agent <span>constitution</span></h1>
+<p class="subtitle">your rules. your agent. your control.</p>
+
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="01-rules.png" alt="Rules Screen">
+    <div class="caption"><span class="num">01</span> — Rules</div>
+  </div>
+  <div class="gallery-item">
+    <img src="02-approval.png" alt="Approval Screen">
+    <div class="caption"><span class="num">02</span> — Approval</div>
+  </div>
+  <div class="gallery-item">
+    <img src="03-dashboard.png" alt="Dashboard Screen">
+    <div class="caption"><span class="num">03</span> — Dashboard</div>
+  </div>
+  <div class="gallery-item">
+    <img src="04-vault.png" alt="Vault Screen">
+    <div class="caption"><span class="num">04</span> — Vault</div>
+  </div>
+  <div class="gallery-item">
+    <img src="05-audit.png" alt="Audit Trail Screen">
+    <div class="caption"><span class="num">05</span> — Audit Trail</div>
+  </div>
+  <div class="gallery-item">
+    <img src="06-pairing.png" alt="Pairing Screen">
+    <div class="caption"><span class="num">06</span> — Pairing</div>
+  </div>
+</div>
+
+<div class="scroll-hint">← scroll →</div>
+
+</body>
+</html>
