@@ -208,6 +208,21 @@
         <p>Every rule check, every approval, every denial — logged on-device in the iOS Keychain. Complete history of what your agent did and didn't do.</p>
       </div>
       <div class="feature-card">
+        <div class="feature-icon">🧪</div>
+        <h3>Drift Testing</h3>
+        <p>Automatically test whether your agent still follows the rules. Generates realistic probes, scores compliance, and shows exactly where your agent drifted — with AI-powered fix suggestions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <h3>Health Data Sync</h3>
+        <p>Optionally sync Apple Health metrics to your agent — sleep, heart rate, steps, workouts, and more. De-identified, encrypted in transit, never stored in the cloud.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Vault</h3>
+        <p>Store sensitive data (credit cards, SSN, bank accounts) on-device in the iOS Keychain. Your agent can request data — but only with your Face ID approval. 60-second TTL, never stored.</p>
+      </div>
+      <div class="feature-card">
         <div class="feature-icon">✨</div>
         <h3>AI Rule Suggestions <span style="font-size: 0.6em; opacity: 0.6;">Coming Soon</span></h3>
         <p>Describe your boundaries in natural language and get intelligent rule suggestions. "Don't let my agent post anything political" → rules generated.</p>
@@ -221,6 +236,58 @@
         <div class="feature-icon">🛡️</div>
         <h3>Open Source</h3>
         <p>The relay infrastructure is fully open source. Self-host, audit, fork. Your rules, your infrastructure, your control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Drift Testing ────────────────────────────────────── -->
+<section id="drift-testing">
+  <div class="container section-center">
+    <p class="section-label">Drift Testing</p>
+    <h2 class="section-title">Trust, but verify.</h2>
+    <p class="section-desc">AI agents drift over time — new prompts, updated models, changed context. Drift testing automatically verifies your agent still follows the rules, catches violations before they matter, and suggests fixes.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">🎯</div>
+        <h3>Generate Probes</h3>
+        <p>The app generates realistic test prompts that look like normal user requests — but use safe, inert targets (no real emails sent, no real files deleted).</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">🤖</div>
+        <h3>Test the Agent</h3>
+        <p>Probes are sent to your real agent through the relay. The agent doesn't know it's being tested — it responds naturally, just like a real conversation.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">📊</div>
+        <h3>Score &amp; Report</h3>
+        <p>Each response is evaluated for genuine rule compliance vs. accidental refusal. See per-rule scores, trends over time, and exactly where drift happened.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">🔧</div>
+        <h3>AI-Powered Fixes</h3>
+        <p>When a rule fails, get AI-generated suggestions for improved rule titles and descriptions — one tap to apply the fix and re-test.</p>
+      </div>
+    </div>
+
+    <div class="audit-features" style="margin-top: 3rem;">
+      <div class="audit-item">
+        <div class="icon">🎭</div>
+        <div>
+          <h4>Four Drift Types Detected</h4>
+          <p><strong>Amnesia</strong> — forgot the rule exists. <strong>Interpretation</strong> — followed the letter, not the spirit. <strong>Pressure</strong> — caved to social pressure. <strong>Capability</strong> — bypassed due to technical framing.</p>
+        </div>
+      </div>
+      <div class="audit-item">
+        <div class="icon">🔒</div>
+        <div>
+          <h4>Safe by Design</h4>
+          <p>All probes use inert targets — @example.com emails, 555 phone numbers, /tmp/ files, non-existent repos. Even if the agent executes, nothing harmful happens.</p>
+        </div>
       </div>
     </div>
   </div>
