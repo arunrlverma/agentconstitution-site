@@ -6,7 +6,7 @@
   <title>Agent Constitution — Your rules. Your agent. Your call.</title>
   <meta name="description" content="Agent Constitution lets you define behavioral rules for your AI agents. Before any restricted action, your agent asks for approval via push notification. You decide — from your iPhone.">
   <meta name="theme-color" content="#0a0a0f">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -60,28 +60,25 @@
     <h2 class="section-title">You set the boundaries. Your agent respects them.</h2>
     <p class="section-desc">Define rules on your iPhone. When your AI agent attempts a restricted action, you get a push notification. Review the action, approve or deny, and the agent proceeds only with your permission.</p>
 
-    <div class="flow">
-      <div class="flow-step">
-        <div class="flow-icon">📋</div>
-        <h3>Define Rules</h3>
+    <div class="flow-diagram">
+      <img src="img/how-it-works-flow.png" alt="How Agent Constitution works: Define Rules → Agent Acts → Rule Triggered → You Decide" class="flow-image">
+    </div>
+
+    <div class="flow-details">
+      <div class="flow-detail">
+        <h3>📋 Define Rules</h3>
         <p>Set behavioral rules on your iPhone — what actions require your approval, across 6 categories.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-icon">🤖</div>
-        <h3>Agent Acts</h3>
+      <div class="flow-detail">
+        <h3>🤖 Agent Acts</h3>
         <p>Your AI agent attempts an action — sending an email, making a purchase, deploying code.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-icon" style="background: var(--accent-glow); border-color: var(--accent);">🔔</div>
-        <h3>Rule Triggered</h3>
+      <div class="flow-detail">
+        <h3>🔔 Rule Triggered</h3>
         <p>The action matches a rule. A push notification is sent to your iPhone with full details.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-icon">✅</div>
-        <h3>You Decide</h3>
+      <div class="flow-detail">
+        <h3>✅ You Decide</h3>
         <p>Review what the agent wants to do. Approve or deny. The agent proceeds only if you say yes.</p>
       </div>
     </div>
@@ -92,22 +89,7 @@
 <section style="padding-top: 0;">
   <div class="container">
     <div class="arch-diagram">
-      <div class="arch-flow">
-        <div class="arch-node">
-          <h4>📱 iPhone App</h4>
-          <p>Rules · Approval · Audit Trail</p>
-        </div>
-        <div class="arch-arrow">⟶</div>
-        <div class="arch-node relay">
-          <h4>📬 Relay</h4>
-          <p>Stateless HTTP · HMAC Signed</p>
-        </div>
-        <div class="arch-arrow">⟶</div>
-        <div class="arch-node">
-          <h4>🤖 AI Agent</h4>
-          <p>Any agent · Any framework</p>
-        </div>
-      </div>
+      <img src="img/architecture-flow.png" alt="Architecture: iPhone App ↔ Relay ↔ AI Agent" class="arch-image">
     </div>
   </div>
 </section>
