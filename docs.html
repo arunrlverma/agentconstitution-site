@@ -74,16 +74,88 @@
 
 <div class="docs-content">
   <div class="docs-nav">
+    <a href="#constitution">The Constitution</a>
+    <a href="#directives">Directives</a>
+    <a href="#compliance">Compliance</a>
     <a href="#installation">Installation</a>
     <a href="#pairing">Pairing</a>
-    <a href="#constitution">Constitution Checks</a>
     <a href="#vault">Vault</a>
     <a href="#health">Health Data</a>
-    <a href="#drift">Drift Testing</a>
     <a href="#encryption">E2E Encryption</a>
     <a href="#integrity">File Integrity</a>
     <a href="#api">API Reference</a>
   </div>
+
+  <h2 id="constitution">The Agent Constitution</h2>
+  
+  <p>The Agent Constitution defines the boundaries of authority for your AI agent. It governs what the agent may do, when it must ask, and where it is explicitly restricted.</p>
+  
+  <p>The Constitution is composed of <strong>Directives</strong> — enforced behavioral constraints that are continuously tested and improved.</p>
+
+  <div class="note">
+    <strong>Progressive Governance:</strong> The Constitution does not promise perfect control. It provides clear boundaries, observable enforcement, and continuous improvement. You remain in control at all times.
+  </div>
+
+  <h2 id="directives">Directives</h2>
+  
+  <p>Directives are enforceable expectations placed on agent behavior, such as requiring approval before sending messages, making purchases, or accessing protected assets.</p>
+  
+  <p>Unlike static rules, directives are <strong>enforced probabilistically</strong>. This reflects the reality of large language models: behavior can be constrained, tested, and improved — but not perfectly guaranteed.</p>
+  
+  <p>Each directive is evaluated through repeated probes to measure how reliably it is followed.</p>
+
+  <h3>Directive Categories</h3>
+  <ul>
+    <li><strong>Communication:</strong> Emails, Slack, LinkedIn, iMessages/SMS</li>
+    <li><strong>Financial:</strong> Purchases, sharing payment info</li>
+    <li><strong>Social:</strong> Social media posts, public comments</li>
+    <li><strong>Smart Home:</strong> Thermostat, locks, devices</li>
+    <li><strong>Development:</strong> Push to main, deploy to production</li>
+    <li><strong>Data:</strong> Share files externally, delete files permanently</li>
+  </ul>
+
+  <h3>Creating Directives</h3>
+  <p>Directives can be created from 15+ prebuilt templates or written in plain English. Example directives:</p>
+  <ul>
+    <li>"Ask before sending work emails"</li>
+    <li>"Require approval for purchases over $50"</li>
+    <li>"Never post to social media without confirmation"</li>
+  </ul>
+
+  <h2 id="compliance">Compliance Confidence</h2>
+  
+  <p>Every directive has a <strong>Compliance Confidence</strong> score. This score represents how consistently the directive is enforced across recent tests and real-world scenarios.</p>
+  
+  <ul>
+    <li><strong>Higher confidence</strong> indicates stronger enforcement</li>
+    <li><strong>Lower confidence</strong> highlights areas where enforcement can be improved</li>
+  </ul>
+  
+  <p>Confidence is not a judgment — it is a measurement.</p>
+
+  <h3>Violations & Amendment</h3>
+  <p>When a directive is violated, the event is recorded and surfaced transparently. Violations are used to <strong>amend directives</strong> — updating enforcement logic to improve future compliance.</p>
+  
+  <p>Over time, this creates a feedback loop where governance strengthens through use. This makes the Constitution <strong>living</strong>: continuously tested, measurable, and improvable.</p>
+
+  <h3>Drift Testing</h3>
+  <p>AI agents drift over time — forgetting rules or finding loopholes. Drift testing automatically verifies your agent still follows directives:</p>
+  <ol>
+    <li>The app generates realistic test prompts (probes)</li>
+    <li>Probes are sent to your agent through the relay</li>
+    <li>Agent responds naturally (doesn't know it's being tested)</li>
+    <li>Responses are evaluated for directive compliance</li>
+    <li>Results update Compliance Confidence scores</li>
+  </ol>
+
+  <h3>Drift Types</h3>
+  <table>
+    <tr><th>Type</th><th>Description</th></tr>
+    <tr><td><strong>Amnesia</strong></td><td>Agent forgot the directive exists entirely</td></tr>
+    <tr><td><strong>Interpretation</strong></td><td>Followed the letter but not the spirit</td></tr>
+    <tr><td><strong>Pressure</strong></td><td>Caved to social pressure or urgency</td></tr>
+    <tr><td><strong>Capability</strong></td><td>Bypassed due to technical framing</td></tr>
+  </table>
 
   <h2 id="installation">Installation</h2>
   
@@ -129,19 +201,9 @@ CHANNEL_TOKEN=your-secret-token</code></pre>
     <strong>Fast-Sync Mode:</strong> After pairing, the agent automatically enters fast-sync mode (2-minute heartbeat) for 24 hours to quickly sync rules and health data. This reverts to 30-minute intervals after setup.
   </div>
 
-  <h2 id="constitution">Constitution Checks</h2>
+  <h2 id="checking">Checking Directives</h2>
 
-  <p>Before performing any restricted action, your agent must check the constitution and wait for approval.</p>
-
-  <h3>When to Check</h3>
-  <ul>
-    <li><strong>Communication:</strong> Emails, Slack, LinkedIn, iMessages/SMS</li>
-    <li><strong>Financial:</strong> Purchases, sharing payment info</li>
-    <li><strong>Social:</strong> Social media posts, public comments</li>
-    <li><strong>Smart Home:</strong> Thermostat, locks, devices</li>
-    <li><strong>Development:</strong> Push to main, deploy to production</li>
-    <li><strong>Data:</strong> Share files externally, delete files permanently</li>
-  </ul>
+  <p>Before performing any restricted action, your agent must check against active directives and wait for approval.</p>
 
   <h3>Using the Script</h3>
   <pre><code>bash skills/agent-constitution/scripts/check-constitution.sh \
@@ -231,34 +293,17 @@ bash skills/agent-constitution/scripts/fetch-health.sh history</code></pre>
     <li><code>personal/health.md</code> — Auto-generated dashboard</li>
   </ul>
 
-  <h2 id="drift">Drift Testing</h2>
+  <h2 id="drift">Running Drift Tests</h2>
 
-  <p>AI agents drift over time. Drift testing automatically verifies your agent still follows the rules.</p>
+  <p>Drift tests are managed from the app's Compliance tab, but you can also trigger them manually:</p>
 
-  <h3>How It Works</h3>
-  <ol>
-    <li>The app generates realistic test prompts (probes)</li>
-    <li>Probes are sent to your agent through the relay</li>
-    <li>Agent responds naturally (doesn't know it's being tested)</li>
-    <li>Responses are evaluated for rule compliance</li>
-    <li>Results show per-rule scores and drift types</li>
-  </ol>
-
-  <h3>Drift Types</h3>
-  <table>
-    <tr><th>Type</th><th>Description</th></tr>
-    <tr><td><strong>Amnesia</strong></td><td>Agent forgot the rule exists entirely</td></tr>
-    <tr><td><strong>Interpretation</strong></td><td>Followed the letter but not the spirit</td></tr>
-    <tr><td><strong>Pressure</strong></td><td>Caved to social pressure or urgency</td></tr>
-    <tr><td><strong>Capability</strong></td><td>Bypassed due to technical framing</td></tr>
-  </table>
-
-  <h3>Running Drift Tests</h3>
   <pre><code># Check for pending probes and run tests
 bash skills/agent-constitution/scripts/run-drift-test.sh
 
 # Force re-run even if already completed
 bash skills/agent-constitution/scripts/run-drift-test.sh --force</code></pre>
+
+  <p>See <a href="#compliance">Compliance Confidence</a> for how drift testing works and what it measures.</p>
 
   <h2 id="encryption">End-to-End Encryption</h2>
 
