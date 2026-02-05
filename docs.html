@@ -66,6 +66,8 @@
     <a href="#vault">Vault</a>
     <a href="#health">Health Data</a>
     <a href="#drift">Drift Testing</a>
+    <a href="#encryption">E2E Encryption</a>
+    <a href="#integrity">File Integrity</a>
     <a href="#api">API Reference</a>
   </div>
 
@@ -243,6 +245,80 @@ bash skills/agent-constitution/scripts/run-drift-test.sh
 
 # Force re-run even if already completed
 bash skills/agent-constitution/scripts/run-drift-test.sh --force</code></pre>
+
+  <h2 id="encryption">End-to-End Encryption</h2>
+
+  <p>Agent Constitution uses AES-256-GCM encryption to protect sensitive data. The relay server never sees plaintext — it only passes encrypted payloads between your iPhone and your agent.</p>
+
+  <h3>What's Encrypted</h3>
+  <ul>
+    <li><strong>Vault data</strong> — Payment info, identity, SSN, bank accounts, OTP codes</li>
+    <li><strong>Health data</strong> — Apple Health metrics synced to your agent</li>
+    <li><strong>Constitution checks</strong> — Action descriptions and approval decisions</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <ul>
+    <li><strong>Algorithm:</strong> AES-256-GCM (authenticated encryption)</li>
+    <li><strong>Key derivation:</strong> HKDF-SHA256 from shared master secret</li>
+    <li><strong>Directional keys:</strong> Separate keys for App→Agent and Agent→App</li>
+    <li><strong>Nonces:</strong> Random 12-byte nonce per message</li>
+    <li><strong>Auth tags:</strong> 16-byte GCM tag for integrity verification</li>
+  </ul>
+
+  <h3>Key Exchange</h3>
+  <p>Encryption keys are established during device pairing. When you pair your iPhone with an agent, the relay generates a 256-bit master key and returns it to both sides. This key is stored in the iOS Keychain and in your agent's secrets file.</p>
+
+  <pre><code># After pairing, your secrets file includes:
+ENCRYPTION_KEY=base64-encoded-256-bit-key
+ENCRYPTION_VERSION=1</code></pre>
+
+  <div class="note">
+    <strong>Zero-Knowledge Relay:</strong> The relay sees only encrypted payloads. Even if the relay were compromised, attackers cannot read your vault data, health metrics, or constitution checks.
+  </div>
+
+  <h2 id="integrity">File Integrity Protection</h2>
+
+  <p>Agent Constitution monitors critical files on your agent for tampering. If your agent modifies its own rules or scripts, the app detects it immediately.</p>
+
+  <h3>How It Works</h3>
+  <ol>
+    <li>On each heartbeat, the agent generates a manifest of protected file hashes</li>
+    <li>The manifest is signed with HMAC-SHA256 using an HKDF-derived key</li>
+    <li>The signed manifest is pushed to your iPhone through the relay</li>
+    <li>The app compares hashes against known-good values</li>
+    <li>If any file changed, you get a tamper alert with details</li>
+  </ol>
+
+  <h3>Protected Files</h3>
+  <p>The following files are monitored for tampering:</p>
+  <ul>
+    <li><code>AGENTS.md</code> — Agent instructions</li>
+    <li><code>active-rules.json</code> — Constitution rules</li>
+    <li><code>check-constitution.sh</code> — Approval request script</li>
+    <li><code>request-vault.sh</code> — Vault request script</li>
+    <li><code>pair.sh</code>, <code>pull-rules.sh</code>, <code>relay-pull.sh</code> — Core scripts</li>
+    <li><code>crypto_helper.py</code>, <code>crypto_utils.sh</code> — Encryption utilities</li>
+    <li><code>encrypt_message.sh</code>, <code>decrypt_message.sh</code> — E2E encryption</li>
+    <li><code>generate-tamper-manifest.sh</code> — Self-referential protection</li>
+    <li><code>heartbeat-sync.sh</code> — Heartbeat handler</li>
+  </ul>
+
+  <h3>Tamper Manifest Format</h3>
+  <pre><code>{
+  "manifest_hash": "sha256-of-all-files",
+  "signature": "hmac-sha256-signature",
+  "generated_at": "2026-02-04T20:00:00Z",
+  "file_count": 13,
+  "files": {
+    "AGENTS.md": {"sha256": "abc123...", "size": 10240},
+    "active-rules.json": {"sha256": "def456...", "size": 1024}
+  }
+}</code></pre>
+
+  <div class="warning">
+    <strong>Important:</strong> The tamper manifest generator is itself protected. If an agent modifies it to exclude files, the hash of the generator script changes, triggering an alert.
+  </div>
 
   <h2 id="api">API Reference</h2>
 

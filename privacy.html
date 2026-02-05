@@ -6,7 +6,7 @@
   <title>Privacy Policy — Agent Constitution</title>
   <meta name="description" content="Agent Constitution privacy policy. Your rules and audit logs stay on your device.">
   <meta name="theme-color" content="#0a0a0f">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -26,7 +26,7 @@
       <a href="/security.html">Security</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/support.html">Support</a>
-      <a href="/terms.html">Terms</a>
+      <a href="/docs.html">Docs</a>
       <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
     </div>
   </div>
@@ -49,6 +49,8 @@
   <li><strong>Audit trail</strong> — a log of every rule check, approval, and denial, stored in the iOS Keychain</li>
   <li><strong>Push notification token</strong> — used to deliver approval request notifications to your device</li>
   <li><strong>Face ID / Touch ID</strong> — used to authenticate when accessing sensitive stored data (e.g., vault items)</li>
+  <li><strong>Apple Health data</strong> — if you enable health sync, metrics like weight, heart rate, HRV, sleep, and steps are sent to your agent (end-to-end encrypted)</li>
+  <li><strong>Vault items</strong> — sensitive data (payment, identity, SSN, bank account, OTP codes) stored in iOS Keychain with Face ID protection</li>
 </ul>
 
 <h2>How Data is Stored</h2>
@@ -95,7 +97,10 @@
 <h2>Security</h2>
 <ul>
   <li>All communication between the app and relay uses <strong>HTTPS/TLS</strong></li>
+  <li><strong>End-to-end encryption (AES-256-GCM)</strong> protects sensitive data — vault requests, health data, and constitution checks are encrypted so the relay cannot read them</li>
+  <li>Encryption keys are derived using <strong>HKDF-SHA256</strong> with separate keys for each direction (app→agent, agent→app)</li>
   <li>Requests are signed with <strong>HMAC-SHA256</strong> with replay protection (timestamps + nonces)</li>
+  <li><strong>File integrity protection</strong> — critical agent files are hash-verified with HMAC-signed manifests to detect tampering</li>
   <li>Audit logs are stored in the <strong>iOS Keychain</strong> with hardware-backed encryption</li>
   <li>Push notification payloads are validated against strict format rules before processing</li>
 </ul>
