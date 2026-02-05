@@ -42,8 +42,8 @@
 <div class="security-hero">
   <div class="security-hero-inner">
     <div class="security-stat">
-      <span class="security-stat-value">0</span>
-      <span class="security-stat-label">Cloud Storage</span>
+      <span class="security-stat-value">E2E</span>
+      <span class="security-stat-label">AES-256-GCM</span>
     </div>
     <div class="security-stat">
       <span class="security-stat-value">On-Device</span>
@@ -51,7 +51,7 @@
     </div>
     <div class="security-stat">
       <span class="security-stat-value">HMAC</span>
-      <span class="security-stat-label">Signed Relay</span>
+      <span class="security-stat-label">Tamper Detection</span>
     </div>
     <div class="security-stat">
       <span class="security-stat-value">OSS</span>
@@ -130,6 +130,31 @@
   <li>Protected by the Secure Enclave on devices that support it</li>
   <li>Each entry records: timestamp, action description, category, matched rule, decision (approved/denied)</li>
   <li>The audit trail cannot be modified by the agent or the relay — only you can clear it from the app</li>
+</ul>
+
+<!-- ── E2E Encryption ───────────────────────────────────── -->
+<h2>End-to-End Encryption</h2>
+<p>All sensitive data between your iPhone and your agent is protected with <strong>AES-256-GCM</strong> encryption. The relay server cannot read your messages — it only passes encrypted payloads.</p>
+<ul>
+  <li><strong>AES-256-GCM</strong> — Industry-standard authenticated encryption with 256-bit keys</li>
+  <li><strong>HKDF-SHA256 key derivation</strong> — Directional keys are derived from a shared master secret using HKDF with domain separation</li>
+  <li><strong>Separate encryption keys</strong> — App→Agent and Agent→App use different derived keys to prevent reflection attacks</li>
+  <li><strong>Random 12-byte nonces</strong> — Each message uses a cryptographically random nonce</li>
+  <li><strong>Authentication tags</strong> — 16-byte GCM tags ensure integrity; tampered ciphertext is rejected</li>
+  <li><strong>Encrypted data types:</strong> Vault requests (payment, identity, SSN), health data, constitution checks</li>
+  <li><strong>Key exchange at pairing</strong> — Encryption keys are established during device pairing and stored in iOS Keychain</li>
+</ul>
+
+<!-- ── File Integrity ──────────────────────────────────── -->
+<h2>File Integrity Protection</h2>
+<p>Agent Constitution monitors critical files on your agent for tampering. If your agent modifies its own rules, scripts, or constitution checks, you'll know immediately.</p>
+<ul>
+  <li><strong>SHA-256 hashes</strong> — Critical files are hashed and compared against known-good values</li>
+  <li><strong>HMAC-signed manifests</strong> — The complete file manifest is signed with an HKDF-derived key; the agent cannot forge a valid signature</li>
+  <li><strong>13 protected files</strong> including: <code>AGENTS.md</code>, <code>active-rules.json</code>, <code>check-constitution.sh</code>, <code>request-vault.sh</code>, encryption scripts, and more</li>
+  <li><strong>Heartbeat verification</strong> — File hashes are checked on every heartbeat and pushed to the app</li>
+  <li><strong>Instant alerts</strong> — If any protected file is modified, the app shows a tamper warning with the affected files</li>
+  <li><strong>Self-protecting</strong> — The tamper manifest generator is itself included in the protected file list</li>
 </ul>
 
 <!-- ── HMAC Signing ────────────────────────────────────── -->
