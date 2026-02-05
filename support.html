@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support — Agent Constitution</title>
-  <meta name="description" content="Get help with Agent Constitution — rule setup, push notifications, audit trail, and more.">
+  <meta name="description" content="Get help with Agent Constitution — rule setup, push notifications, vault, drift testing, and more.">
   <meta name="theme-color" content="#0a0a0f">
+  <link rel="canonical" href="https://agentconstitution.com/support.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://agentconstitution.com/support.html">
+  <meta property="og:title" content="Support — Agent Constitution">
+  <meta property="og:description" content="Get help with Agent Constitution — rule setup, push notifications, vault, drift testing, and more.">
+  
   <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 </head>
@@ -69,6 +77,15 @@
 
 <h3>Can I self-host the relay?</h3>
 <p>Yes! The relay is open source. Clone the repo, run <code>npm install && npx tsx src/relay-node.ts</code>, or deploy to any cloud provider. See the <a href="https://github.com/arunrlverma/relay4agents">GitHub repo</a> for deployment instructions.</p>
+
+<h3>What is drift testing?</h3>
+<p>AI agents can "drift" over time — forgetting rules or finding loopholes. Drift testing automatically sends realistic test prompts to your agent, evaluates responses, and shows you exactly where compliance dropped. Run tests from the app's Compliance tab.</p>
+
+<h3>How does file integrity protection work?</h3>
+<p>Agent Constitution monitors 13 critical files on your agent (rules, scripts, encryption utilities). On each heartbeat, file hashes are computed and signed with HMAC. If your agent tampers with any protected file, the app shows a tamper warning immediately.</p>
+
+<h3>Is my data encrypted?</h3>
+<p>Yes! Vault data, health metrics, and constitution checks are protected with AES-256-GCM end-to-end encryption. The relay server cannot read your data — only your iPhone and your agent can decrypt it.</p>
 
 <h3>Does Agent Constitution work with any AI agent?</h3>
 <p>Yes — it's a pure HTTP API. Any agent framework that can make HTTP requests can perform constitution checks. We provide a ready-made skill for ClawdHub (<code>clawdhub install constitution</code>), but you can integrate with any agent by calling the API directly.</p>
