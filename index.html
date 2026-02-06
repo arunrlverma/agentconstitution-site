@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>Agent Constitution — Your rules. Your agent. Your call.</title>
-  <meta name="description" content="Agent Constitution lets you define behavioral rules for your AI agents. Before any restricted action, your agent asks for approval via push notification. You decide — from your iPhone.">
+  <meta name="description" content="Define behavioral rules for your AI agents. Before any restricted action, your agent asks for approval via push notification. You decide — from your iPhone.">
   <meta name="theme-color" content="#0a0a0f">
-  <meta name="keywords" content="AI agent, guardrails, safety, constitution, approval, rules, iPhone, automation, Claude, ChatGPT, AI safety">
+  <meta name="keywords" content="AI agent, guardrails, safety, constitution, approval, rules, iPhone, automation, Claude, ChatGPT, AI safety, OpenClaw">
   <link rel="canonical" href="https://agentconstitution.com/">
   
   <!-- Open Graph -->
@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Define behavioral rules for AI agents. Get push notifications before restricted actions. Approve or deny from your iPhone.">
   <meta name="twitter:image" content="https://agentconstitution.com/img/og-image.png">
   
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   
   <!-- Structured Data -->
@@ -51,7 +51,7 @@
       "End-to-end encryption",
       "File integrity protection",
       "Drift testing",
-      "Secure vault",
+      "Secure vault with Face ID",
       "Health data sync",
       "Open source relay"
     ]
@@ -79,7 +79,7 @@
       <a href="/privacy.html">Privacy</a>
       <a href="/support.html">Support</a>
       <a href="/docs.html">Docs</a>
-      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+      <a href="https://github.com/arunrlverma/agent-constitution" target="_blank">GitHub</a>
       <a href="/#download" class="nav-cta">Download</a>
     </div>
   </div>
@@ -92,13 +92,13 @@
   </div>
   <div class="container">
     <h1>Your rules. <span>Your agent.</span><br>Your call.</h1>
-    <p>AI agents can send emails, make purchases, post on social media, and control your home. Agent Constitution lets you decide what they can and can't do — with approval from your iPhone for every restricted action.</p>
+    <p>AI agents can send emails, make purchases, post on social media, and control your home. Agent Constitution lets you define what requires your approval — and blocks your agent until you say yes.</p>
     <div class="hero-buttons">
       <a href="#download" class="btn btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         Download Free
       </a>
-      <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">
+      <a href="https://github.com/arunrlverma/agent-constitution" class="btn btn-secondary" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         View Source
       </a>
@@ -111,7 +111,7 @@
   <div class="container section-center">
     <p class="section-label">How It Works</p>
     <h2 class="section-title">You set the boundaries. Your agent respects them.</h2>
-    <p class="section-desc">Define rules on your iPhone. When your AI agent attempts a restricted action, you get a push notification. Review the action, approve or deny, and the agent proceeds only with your permission.</p>
+    <p class="section-desc">Define rules in plain English on your iPhone. When your AI agent attempts a restricted action, you get a push notification. Review the action, approve or deny, and the agent proceeds only with your permission.</p>
 
     <div class="flow-diagram">
       <img src="img/how-it-works-flow.png" alt="How Agent Constitution works: Define Rules → Agent Acts → Rule Triggered → You Decide" class="flow-image">
@@ -120,19 +120,19 @@
     <div class="flow-details">
       <div class="flow-detail">
         <h3>📋 Define Rules</h3>
-        <p>Set behavioral rules on your iPhone — what actions require your approval, across 6 categories.</p>
+        <p>Create rules in plain English — "Ask before sending work emails" or "Never post to social media without approval."</p>
       </div>
       <div class="flow-detail">
         <h3>🤖 Agent Acts</h3>
-        <p>Your AI agent attempts an action — sending an email, making a purchase, deploying code.</p>
+        <p>Your AI agent attempts an action — sending an email, making a purchase, running a command.</p>
       </div>
       <div class="flow-detail">
-        <h3>🔔 Rule Triggered</h3>
-        <p>The action matches a rule. A push notification is sent to your iPhone with full details.</p>
+        <h3>🔔 Push Notification</h3>
+        <p>The action matches a rule. Your iPhone gets a push notification with full details of what the agent wants to do.</p>
       </div>
       <div class="flow-detail">
         <h3>✅ You Decide</h3>
-        <p>Review what the agent wants to do. Approve or deny. The agent proceeds only if you say yes.</p>
+        <p>Approve or deny. The agent proceeds only if you say yes. Denials are final.</p>
       </div>
     </div>
   </div>
@@ -147,12 +147,12 @@
   </div>
 </section>
 
-<!-- ── Directives ─────────────────────────────────────── -->
+<!-- ── Rules ─────────────────────────────────────── -->
 <section id="rules">
   <div class="container section-center">
-    <p class="section-label">Directives</p>
-    <h2 class="section-title">Six categories. Progressive governance.</h2>
-    <p class="section-desc">Directives are enforced behaviors that govern how your agent is allowed to act. They are enforced probabilistically and improve over time through testing and amendment.</p>
+    <p class="section-label">Rules</p>
+    <h2 class="section-title">Write rules in plain English.</h2>
+    <p class="section-desc">No code, no config files. Just describe what actions should require your approval. The agent checks your rules before acting.</p>
 
     <div class="rules-categories">
       <div class="rule-category">
@@ -161,8 +161,8 @@
         <ul>
           <li>Send work emails</li>
           <li>Post to Slack channels</li>
-          <li>Send LinkedIn messages</li>
-          <li>Send iMessages</li>
+          <li>Send texts or iMessages</li>
+          <li>Reply on your behalf</li>
         </ul>
       </div>
       <div class="rule-category">
@@ -179,7 +179,7 @@
         <div class="rule-category-icon">📱</div>
         <h4>Social Media</h4>
         <ul>
-          <li>Post to social media</li>
+          <li>Post to Twitter/X</li>
           <li>Leave public comments</li>
           <li>Like or share content</li>
           <li>Follow accounts</li>
@@ -212,10 +212,12 @@
           <li>Share files externally</li>
           <li>Delete files permanently</li>
           <li>Export sensitive data</li>
-          <li>Modify access permissions</li>
+          <li>Modify permissions</li>
         </ul>
       </div>
     </div>
+    
+    <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.95rem;">These are examples. You define your own rules — whatever matters to you.</p>
   </div>
 </section>
 
@@ -224,164 +226,159 @@
   <div class="container">
     <p class="section-label">Features</p>
     <h2 class="section-title">Your guardrails. Not the AI company's.</h2>
-    <p class="section-desc">Agent Constitution puts you in control — define your own rules, get notified in real time, and keep a complete audit trail of every decision.</p>
+    <p class="section-desc">Agent Constitution puts you in control — define your own rules, get notified in real time, and keep a complete audit trail.</p>
 
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📋</div>
-        <h3>User-Defined Directives</h3>
-        <p>You define the behavioral boundaries — not the AI company. 15+ prebuilt templates across 6 categories, plus custom directives in plain English.</p>
+        <h3>Plain-English Rules</h3>
+        <p>Write rules however you want — "Ask before sending work emails" or "Never run rm -rf without approval." No templates required.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔔</div>
         <h3>Push Notifications</h3>
-        <p>When a rule is triggered, you get an instant push notification on your iPhone. See exactly what the agent wants to do, then approve or deny.</p>
+        <p>When a rule is triggered, you get an instant push notification. See exactly what the agent wants to do, then approve or deny.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📜</div>
-        <h3>Full Audit Trail</h3>
-        <p>Every rule check, every approval, every denial — logged on-device in the iOS Keychain. Complete history of what your agent did and didn't do.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Compliance Confidence</h3>
-        <p>Every directive has a confidence score showing how reliably it's enforced. Automatic drift testing generates probes, measures compliance, and suggests amendments to strengthen enforcement.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">❤️</div>
-        <h3>Health Data Sync</h3>
-        <p>Sync Apple Health metrics to your agent: weight, body fat, resting HR, HRV, sleep hours, steps, walking distance, VO2 max, blood pressure, and workout history. Encrypted in transit, never stored in the cloud.</p>
+        <h3>Audit Trail</h3>
+        <p>Every rule check, approval, and denial — logged on-device. See what your agent did and when.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔐</div>
         <h3>Secure Vault</h3>
-        <p>Six vault types: Identity (name, address), Payment (cards), SSN, Bank Account, OTP/2FA codes, and Custom data. Stored in iOS Keychain with Face ID. Your agent requests, you approve — 60-second TTL, end-to-end encrypted.</p>
+        <p>Store sensitive data — identity, payment cards, SSN, bank accounts — protected by Face ID. Your agent requests access; you approve each time.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔑</div>
         <h3>2FA/OTP Codes</h3>
-        <p>When your agent hits a 2FA prompt, it requests the code via vault. Enter it on your phone with Face ID — never paste secrets in chat. The code auto-expires after use.</p>
+        <p>When your agent hits a 2FA prompt, it requests the code through the vault. Enter it on your phone — never paste secrets in chat.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <h3>Health Data Sync</h3>
+        <p>Sync Apple Health metrics to your agent — weight, sleep, HRV, steps, workouts. Encrypted in transit, stored locally on your machine.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Drift Testing</h3>
+        <p>Test whether your agent actually follows the rules. The app sends realistic probes, measures compliance, and shows you the results.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📁</div>
+        <h3>File Integrity</h3>
+        <p>Critical agent files are hash-verified. If the agent tampers with its own rules or scripts, the app detects it and alerts you.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔗</div>
         <h3>Easy Pairing</h3>
-        <p>Scan a QR code or enter a pairing code like <code>CLAW-A1B2C3D4</code>. Single-use, expires in 5 minutes. Fast-sync mode activates automatically for quick setup.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>AI Rule Suggestions <span style="font-size: 0.6em; opacity: 0.6;">Coming Soon</span></h3>
-        <p>Describe your boundaries in natural language and get intelligent rule suggestions. "Don't let my agent post anything political" → rules generated.</p>
+        <p>Scan a QR code or enter a pairing code like <code>CLAW-A1B2C3D4</code>. Single-use, expires in 5 minutes.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
         <h3>End-to-End Encryption</h3>
-        <p>All sensitive data is encrypted with AES-256-GCM using HKDF-derived keys. The relay can't read your vault data, health metrics, or constitution checks — only you and your agent can.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📁</div>
-        <h3>File Integrity Protection</h3>
-        <p>Critical agent files are hash-verified with HMAC-signed manifests. If your agent tampers with its own rules or scripts, the app detects it instantly and alerts you.</p>
+        <p>All sensitive data encrypted with AES-256-GCM. The relay can't read your vault data or health metrics — only you and your agent can.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
         <h3>Pure HTTP API</h3>
-        <p>No SDKs, no vendor lock-in. Any AI agent framework can check rules with a single HTTP call. Works from Python, Node, bash, or any language.</p>
+        <p>No SDKs, no vendor lock-in. Any AI agent can check rules with a single HTTP call. Works from Python, Node, bash, or any language.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🛡️</div>
         <h3>Open Source</h3>
-        <p>The relay infrastructure is fully open source. Self-host, audit, fork. Your rules, your infrastructure, your control.</p>
+        <p>The relay infrastructure and agent skill are fully open source. Self-host, audit, fork. Your rules, your control.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Compliance ────────────────────────────────────── -->
+<!-- ── Drift Testing ────────────────────────────────────── -->
 <section id="drift-testing">
   <div class="container section-center">
-    <p class="section-label">Compliance</p>
-    <h2 class="section-title">Measured. Not assumed.</h2>
-    <p class="section-desc">Compliance Confidence reflects how reliably each directive is enforced across recent tests. Lower confidence indicates opportunities to strengthen enforcement. The Constitution is living — continuously tested, measurable, and improvable.</p>
+    <p class="section-label">Drift Testing</p>
+    <h2 class="section-title">Trust, but verify.</h2>
+    <p class="section-desc">AI agents can drift — forget rules, misinterpret them, or cave under pressure. Drift testing measures actual compliance so you know your rules are working.</p>
 
     <div class="flow">
       <div class="flow-step">
         <div class="flow-icon">🎯</div>
         <h3>Generate Probes</h3>
-        <p>The app generates realistic test prompts that look like normal user requests — but use safe, inert targets (no real emails sent, no real files deleted).</p>
+        <p>The app generates test prompts that look like normal user requests — but use safe, inert targets.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
         <div class="flow-icon">🤖</div>
         <h3>Test the Agent</h3>
-        <p>Probes are sent to your real agent through the relay. The agent doesn't know it's being tested — it responds naturally, just like a real conversation.</p>
+        <p>Probes are sent to your real agent. It doesn't know it's being tested — responds naturally.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
         <div class="flow-icon">📊</div>
-        <h3>Measure Confidence</h3>
-        <p>Each response is evaluated for genuine directive compliance. Confidence scores update in real-time. See per-directive trends and exactly where drift occurred.</p>
+        <h3>Measure Compliance</h3>
+        <p>Each response is evaluated. Did the agent check the rule? Ask for approval? Or just act?</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
-        <div class="flow-icon">🔧</div>
-        <h3>Amend &amp; Improve</h3>
-        <p>When a directive fails, violations are recorded and used to amend enforcement. One tap to apply AI-suggested improvements and re-test.</p>
+        <div class="flow-icon">📈</div>
+        <h3>Track Over Time</h3>
+        <p>See compliance scores per rule. Identify which rules need strengthening.</p>
       </div>
     </div>
 
     <div class="audit-features" style="margin-top: 3rem;">
       <div class="audit-item">
-        <div class="icon">🎭</div>
-        <div>
-          <h4>Four Drift Types Detected</h4>
-          <p><strong>Amnesia</strong> — forgot the directive exists. <strong>Interpretation</strong> — followed the letter, not the spirit. <strong>Pressure</strong> — caved to social pressure. <strong>Capability</strong> — bypassed due to technical framing.</p>
-        </div>
-      </div>
-      <div class="audit-item">
         <div class="icon">🔒</div>
         <div>
           <h4>Safe by Design</h4>
-          <p>All probes use inert targets — @example.com emails, 555 phone numbers, /tmp/ files, non-existent repos. Even if the agent executes, nothing harmful happens.</p>
+          <p>All probes use inert targets — @example.com emails, 555 phone numbers, /tmp/ files. Even if the agent executes, nothing harmful happens.</p>
+        </div>
+      </div>
+      <div class="audit-item">
+        <div class="icon">🎭</div>
+        <div>
+          <h4>Real-World Scenarios</h4>
+          <p>Probes simulate actual user requests — urgency, social pressure, technical framing. Tests how the agent behaves under realistic conditions.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Audit Trail ──────────────────────────────────────── -->
-<section id="audit-trail">
+<!-- ── Vault ────────────────────────────────────────────── -->
+<section id="vault">
   <div class="container section-center">
-    <p class="section-label">Audit Trail</p>
-    <h2 class="section-title">Every decision. Permanently recorded.</h2>
-    <p class="section-desc">Agent Constitution keeps a complete, tamper-proof audit log of every rule check, approval, and denial — stored securely on your device.</p>
+    <p class="section-label">Secure Vault</p>
+    <h2 class="section-title">Sensitive data, Face ID protected.</h2>
+    <p class="section-desc">Store identity, payment cards, SSN, bank accounts, and custom secrets in iOS Keychain. When your agent needs them, you approve with Face ID. Data flows through the relay encrypted — never stored in the cloud.</p>
 
     <div class="audit-features">
       <div class="audit-item">
-        <div class="icon">📝</div>
+        <div class="icon">👤</div>
         <div>
-          <h4>Action Logged</h4>
-          <p>What the agent attempted — full action description, category, and timestamp</p>
+          <h4>Identity</h4>
+          <p>Name, email, phone, address, date of birth — for filling forms and shipping info.</p>
         </div>
       </div>
       <div class="audit-item">
-        <div class="icon">⚖️</div>
+        <div class="icon">💳</div>
         <div>
-          <h4>Decision Recorded</h4>
-          <p>Whether you approved or denied, and which rule was triggered</p>
+          <h4>Payment</h4>
+          <p>Card number, expiry, CVV, billing address — for purchases. Never stored by the agent.</p>
         </div>
       </div>
       <div class="audit-item">
-        <div class="icon">🔐</div>
+        <div class="icon">🔢</div>
         <div>
-          <h4>Keychain Secured</h4>
-          <p>Audit logs stored in iOS Keychain — encrypted, on-device, not synced to cloud</p>
+          <h4>SSN & Bank</h4>
+          <p>Social security number and bank account details — for tax forms and transfers.</p>
         </div>
       </div>
       <div class="audit-item">
-        <div class="icon">📊</div>
+        <div class="icon">🔑</div>
         <div>
-          <h4>Browse &amp; Search</h4>
-          <p>Filter by category, date, or decision. See patterns in your agent's behavior</p>
+          <h4>OTP Codes</h4>
+          <p>Enter 2FA codes on your phone when the agent hits a login prompt. Ephemeral — never saved.</p>
         </div>
       </div>
     </div>
@@ -395,9 +392,9 @@
       <div>
         <p class="section-label">For Developers</p>
         <h2 class="section-title">Three commands. Full integration.</h2>
-        <p class="section-desc">Install the skill package, pair your phone, and your agent is ready. Works with <a href="https://openclaw.ai" target="_blank" style="color: var(--accent);">OpenClaw</a> out of the box. Constitution checks, vault access, health sync — all included.</p>
+        <p class="section-desc">Clone the skill, pair your phone, and your agent is ready. Works with <a href="https://openclaw.ai" target="_blank" style="color: var(--accent);">OpenClaw</a> out of the box. Constitution checks, vault access, health sync — all included.</p>
         <div class="clawdhub-note">
-          <p>📦 <strong>Requires:</strong> OpenClaw, iPhone app, jq, Python 3</p>
+          <p>📦 <strong>Requires:</strong> OpenClaw, iPhone app, jq, bash</p>
         </div>
         <br>
         <a href="/docs.html" class="btn btn-secondary">Read the Docs →</a>
@@ -410,10 +407,10 @@
 <span class="cmd">bash</span> agent-constitution/scripts/setup.sh
 
 <span class="comment"># 2. Pair your iPhone (get code from app)</span>
-<span class="cmd">bash</span> agent-constitution/scripts/pair.sh <span class="string">CLAW-A1B2C3D4</span>
+<span class="cmd">bash</span> skills/agent-constitution/scripts/pair.sh <span class="string">CLAW-A1B2C3D4</span>
 
 <span class="comment"># 3. Your agent now checks before acting:</span>
-<span class="cmd">bash</span> scripts/check-constitution.sh \
+<span class="cmd">bash</span> skills/agent-constitution/scripts/check-constitution.sh \
   --rule <span class="string">"Ask before sending work emails"</span> \
   --action <span class="string">"Send report to team@company.com"</span>
 
@@ -421,10 +418,10 @@
 <span class="comment"># ❌ Denied    → stop and inform user</span>
 
 <span class="comment"># Vault access with Face ID:</span>
-<span class="cmd">bash</span> scripts/request-vault.sh <span class="string">payment</span> <span class="string">"Purchase requested"</span>
+<span class="cmd">bash</span> skills/agent-constitution/scripts/request-vault.sh <span class="string">payment</span> <span class="string">"Complete purchase"</span>
 
 <span class="comment"># Health data:</span>
-<span class="cmd">bash</span> scripts/fetch-health.sh <span class="string">latest</span></pre>
+<span class="cmd">bash</span> skills/agent-constitution/scripts/fetch-health.sh <span class="string">latest</span></pre>
       </div>
     </div>
   </div>
@@ -440,7 +437,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         App Store — Coming Soon
       </a>
-      <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">
+      <a href="https://github.com/arunrlverma/agent-constitution" class="btn btn-secondary" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         View on GitHub
       </a>
@@ -457,7 +454,7 @@
       <a href="/terms.html">Terms of Service</a>
       <a href="/support.html">Support</a>
       <a href="/security.html">Security</a>
-      <a href="https://github.com/arunrlverma/relay4agents" target="_blank">GitHub</a>
+      <a href="https://github.com/arunrlverma/agent-constitution" target="_blank">GitHub</a>
     </div>
   </div>
 </footer>
