@@ -54,8 +54,8 @@
 <h3>How do I set up Agent Constitution with my AI agent?</h3>
 <p>After installing Agent Constitution, the app displays a pairing code. Tell your AI agent the code — it will claim it and establish a secure channel. From there, your agent can make constitution checks before performing restricted actions. See the <a href="https://github.com/arunrlverma/relay4agents">GitHub docs</a> for integration details.</p>
 
-<h3>How do I create rules?</h3>
-<p>Open the app → Rules tab → tap "+" to add a rule. Write your rule in plain English — for example, "Ask before sending work emails" or "Require approval for purchases." Rules can cover any action: communication, purchases, social media, smart home, development commands, file operations, and more.</p>
+<h3>How do I create directives?</h3>
+<p>Open the app → Directives tab → tap "+" to add a directive. Write your directive in plain English — for example, "Ask before sending work emails" or "Require approval for purchases." Directives can cover any action: communication, purchases, social media, smart home, development commands, file operations, and more.</p>
 
 <h3>I'm not getting push notifications for approval requests</h3>
 <ul>
@@ -69,11 +69,11 @@
 <p>Approval/denial responses expire after 60 seconds. Make sure your agent is polling for responses with the <code>wait</code> parameter. If you're self-hosting the relay, check that it's running and the agent's pull request is reaching it.</p>
 
 <h3>How do I view my audit trail?</h3>
-<p>Open the app → Rules tab → scroll to the Audit Log section. You'll see a chronological list of every constitution check, including what action was requested, which rule was triggered, and whether you approved or denied.</p>
+<p>Open the app → Directives tab → scroll to the Audit Log section. You'll see a chronological list of every constitution check, including what action was requested, which directive was triggered, and whether you approved or denied.</p>
 
 <h3>How do I remove my data?</h3>
 <ul>
-  <li><strong>Rules:</strong> Open Agent Constitution → Rules tab → swipe to delete individual rules, or use "Reset All Rules" in Settings</li>
+  <li><strong>Directives:</strong> Open Agent Constitution → Directives tab → swipe to delete individual directives, or use "Reset All Directives" in Settings</li>
   <li><strong>Audit trail:</strong> Settings → Clear Audit Trail. This permanently deletes all logged decisions from the Keychain.</li>
   <li><strong>Relay data:</strong> There is none. The relay stores nothing to disk. Restarting the relay clears all in-memory data.</li>
 </ul>
@@ -82,10 +82,10 @@
 <p>Yes! The relay is open source. Clone the repo, run <code>npm install && npx tsx src/relay-node.ts</code>, or deploy to any cloud provider. See the <a href="https://github.com/arunrlverma/relay4agents">GitHub repo</a> for deployment instructions.</p>
 
 <h3>What is drift testing?</h3>
-<p>AI agents can "drift" over time — forgetting rules or finding loopholes. Drift testing automatically sends realistic test prompts to your agent, evaluates responses, and shows you exactly where compliance dropped. Run tests from the app's Compliance tab.</p>
+<p>AI agents can "drift" over time — forgetting directives or finding loopholes. Drift testing automatically sends realistic test prompts to your agent, evaluates responses, and shows you exactly where compliance dropped. Run tests from the app's Compliance tab.</p>
 
 <h3>How does file integrity protection work?</h3>
-<p>Agent Constitution monitors 13 critical files on your agent (rules, scripts, encryption utilities). On each heartbeat, file hashes are computed and signed with HMAC. If your agent tampers with any protected file, the app shows a tamper warning immediately.</p>
+<p>Agent Constitution monitors 13 critical files on your agent (directives, scripts, encryption utilities). On each heartbeat, file hashes are computed and signed with HMAC. If your agent tampers with any protected file, the app shows a tamper warning immediately.</p>
 
 <h3>Is my data encrypted?</h3>
 <p>Yes! Vault data, health metrics, and constitution checks are protected with AES-256-GCM end-to-end encryption. The relay server cannot read your data — only your iPhone and your agent can decrypt it.</p>

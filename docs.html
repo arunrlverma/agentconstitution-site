@@ -80,8 +80,8 @@
     <a href="#overview">Overview</a>
     <a href="#installation">Installation</a>
     <a href="#pairing">Pairing</a>
-    <a href="#rules">Rules</a>
-    <a href="#checking">Checking Rules</a>
+    <a href="#directives">Directives</a>
+    <a href="#checking">Checking Directives</a>
     <a href="#vault">Vault</a>
     <a href="#health">Health Data</a>
     <a href="#drift">Drift Testing</a>
@@ -155,11 +155,11 @@ CHANNEL_TOKEN=your-secret-token</code></pre>
     <strong>Fast-Sync Mode:</strong> After pairing, the agent enters fast-sync mode (2-minute heartbeat) for 24 hours. This quickly syncs rules and health data during initial setup, then reverts to 30-minute intervals.
   </div>
 
-  <h2 id="rules">Defining Rules</h2>
+  <h2 id="directives">Defining Directives</h2>
 
-  <p>Rules are defined in the iOS app. Write them in plain English — describe what actions should require your approval.</p>
+  <p>Directives are defined in the iOS app. Write them in plain English — describe what actions should require your approval.</p>
 
-  <h3>Example Rules</h3>
+  <h3>Example Directives</h3>
   <p>The app includes 15 prebuilt templates across 6 categories, or you can write your own:</p>
   <ul>
     <li>"Ask before sending work emails"</li>
@@ -180,9 +180,9 @@ CHANNEL_TOKEN=your-secret-token</code></pre>
 
   <p>You don't need to write this format — the app handles it. Just describe your rule in plain English.</p>
 
-  <h2 id="checking">Checking Rules</h2>
+  <h2 id="checking">Checking Directives</h2>
 
-  <p>Before performing any restricted action, your agent must check against active rules and wait for approval.</p>
+  <p>Before performing any restricted action, your agent must check against active directives and wait for approval.</p>
 
   <h3>Using the Script</h3>
   <pre><code>bash skills/agent-constitution/scripts/check-constitution.sh \
