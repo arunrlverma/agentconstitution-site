@@ -394,38 +394,37 @@
     <div class="code-section">
       <div>
         <p class="section-label">For Developers</p>
-        <h2 class="section-title">One API call. Before every action.</h2>
-        <p class="section-desc">Your agent checks the constitution before performing restricted actions. If a rule applies, the user gets a push notification and the agent waits for approval. Standard HTTP — no SDK required.</p>
+        <h2 class="section-title">Three commands. Full integration.</h2>
+        <p class="section-desc">Install the skill package, pair your phone, and your agent is ready. Works with <a href="https://openclaw.ai" target="_blank" style="color: var(--accent);">OpenClaw</a> out of the box. Constitution checks, vault access, health sync — all included.</p>
         <div class="clawdhub-note">
-          <p>📦 Install the agent skill: <code>clawdhub install constitution</code></p>
+          <p>📦 <strong>Requires:</strong> OpenClaw, iPhone app, jq, Python 3</p>
         </div>
         <br>
-        <a href="https://github.com/arunrlverma/relay4agents" class="btn btn-secondary" target="_blank">Read the Docs →</a>
+        <a href="/docs.html" class="btn btn-secondary">Read the Docs →</a>
+        <a href="https://github.com/arunrlverma/agent-constitution" class="btn btn-secondary" target="_blank" style="margin-left: 0.5rem;">View on GitHub →</a>
       </div>
       <div class="code-block">
-<pre><span class="comment"># Check the constitution before acting</span>
-<span class="cmd">curl</span> -X POST \
-  -H <span class="string">"Authorization: Bearer $SECRET"</span> \
-  -d <span class="string">'{
-    "type": "constitution_check",
-    "action": "send_email",
-    "category": "communication",
-    "description": "Send quarterly report to team@company.com",
-    "details": {
-      "to": "team@company.com",
-      "subject": "Q4 Report"
-    }
-  }'</span> \
-  <span class="string">"$RELAY/channel/$CH/push?role=gateway"</span>
+<pre><span class="comment"># 1. Install the skill</span>
+<span class="cmd">cd</span> <span class="string">$WORKSPACE/skills</span>
+<span class="cmd">git clone</span> https://github.com/arunrlverma/agent-constitution.git
+<span class="cmd">bash</span> agent-constitution/scripts/setup.sh
 
-<span class="comment"># User gets push notification...</span>
-<span class="comment"># They review and approve/deny...</span>
+<span class="comment"># 2. Pair your iPhone (get code from app)</span>
+<span class="cmd">bash</span> agent-constitution/scripts/pair.sh <span class="string">CLAW-A1B2C3D4</span>
 
-<span class="comment"># Pull the decision</span>
-<span class="cmd">curl</span> -H <span class="string">"Authorization: Bearer $SECRET"</span> \
-  <span class="string">"$RELAY/channel/$CH/pull?role=gateway&wait=30"</span>
+<span class="comment"># 3. Your agent now checks before acting:</span>
+<span class="cmd">bash</span> scripts/check-constitution.sh \
+  --rule <span class="string">"Ask before sending work emails"</span> \
+  --action <span class="string">"Send report to team@company.com"</span>
 
-<span class="comment"># → {"decision": "approved", "rule": "work_emails"}</span></pre>
+<span class="comment"># ✅ Approved  → proceed</span>
+<span class="comment"># ❌ Denied    → stop and inform user</span>
+
+<span class="comment"># Vault access with Face ID:</span>
+<span class="cmd">bash</span> scripts/request-vault.sh <span class="string">payment</span> <span class="string">"Purchase requested"</span>
+
+<span class="comment"># Health data:</span>
+<span class="cmd">bash</span> scripts/fetch-health.sh <span class="string">latest</span></pre>
       </div>
     </div>
   </div>

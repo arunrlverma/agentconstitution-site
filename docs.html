@@ -162,30 +162,43 @@
 
   <h2 id="installation">Installation</h2>
   
-  <p>Agent Constitution is distributed as a <strong>skill package</strong> that integrates with any AI agent framework. The skill includes bash scripts, configuration files, and documentation.</p>
+  <p>Agent Constitution is distributed as a <strong>skill package</strong> for <a href="https://openclaw.ai" target="_blank">OpenClaw</a>. The skill includes bash scripts, Python encryption utilities, and documentation.</p>
 
-  <h3>Using ClawdHub (Recommended)</h3>
-  <pre><code>clawdhub install constitution</code></pre>
-  
-  <p>This installs the skill to your agent's skills directory and sets up the required configuration.</p>
+  <h3>Requirements</h3>
+  <ul>
+    <li><strong>OpenClaw</strong> — Install from <a href="https://openclaw.ai" target="_blank">openclaw.ai</a></li>
+    <li><strong>Agent Constitution iOS App</strong> — Download from the App Store</li>
+    <li><strong>jq</strong> — <code>brew install jq</code></li>
+    <li><strong>Python 3</strong> — For E2E encryption</li>
+  </ul>
 
-  <h3>Manual Installation</h3>
-  <pre><code># Clone the relay repository
-git clone https://github.com/arunrlverma/relay4agents.git
+  <h3>Install the Skill</h3>
+  <pre><code># Navigate to your OpenClaw workspace skills directory
+cd $WORKSPACE/skills
 
-# Copy the skill to your workspace
-cp -r relay4agents/skill ./skills/agent-constitution
+# Clone the skill package
+git clone https://github.com/arunrlverma/agent-constitution.git
 
-# Run setup
-bash ./skills/agent-constitution/scripts/setup.sh</code></pre>
+# Run setup (patches AGENTS.md and HEARTBEAT.md)
+bash agent-constitution/scripts/setup.sh</code></pre>
+
+  <div class="note">
+    <strong>$WORKSPACE</strong> is your OpenClaw workspace directory (e.g., <code>~/openclaw</code>). The setup script will verify OpenClaw is configured before proceeding.
+  </div>
 
   <h3>What Gets Installed</h3>
   <table>
+    <tr><th>Component</th><th>Purpose</th></tr>
+    <tr><td><code>SKILL.md</code></td><td>Instructions your agent reads at session start</td></tr>
+    <tr><td><code>scripts/</code></td><td>Bash scripts for pairing, sync, approvals, vault, drift tests</td></tr>
+    <tr><td><code>templates/</code></td><td>Health dashboard template</td></tr>
+  </table>
+  
+  <p>At runtime, additional files are created:</p>
+  <table>
     <tr><th>File</th><th>Purpose</th></tr>
-    <tr><td><code>SKILL.md</code></td><td>Main documentation for the agent to read</td></tr>
     <tr><td><code>active-rules.json</code></td><td>Synced rules from your iPhone</td></tr>
-    <tr><td><code>scripts/*.sh</code></td><td>Bash scripts for all operations</td></tr>
-    <tr><td><code>templates/</code></td><td>Rule templates and examples</td></tr>
+    <tr><td><code>~/.secrets/relay4agents.env</code></td><td>Channel credentials (after pairing)</td></tr>
   </table>
 
   <h2 id="pairing">Pairing Your iPhone</h2>
