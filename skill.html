@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Skill — Agent Constitution</title>
+  <meta name="description" content="Install the Agent Constitution skill package for OpenClaw. Bash scripts for constitution checks, vault access, health sync, and drift testing.">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="canonical" href="https://agentconstitution.com/skill.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://agentconstitution.com/skill.html">
+  <meta property="og:title" content="Agent Skill — Agent Constitution">
+  <meta property="og:description" content="Install the Agent Constitution skill package for OpenClaw. Constitution checks, vault access, health sync, drift testing.">
+  <meta property="og:image" content="https://agentconstitution.com/img/og-image.png">
+  
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <style>
+    .skill-hero { padding: 100px 24px 60px; text-align: center; }
+    .skill-hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .skill-hero h1 span { color: var(--accent); }
+    .skill-hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+    .skill-content { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; }
+    .skill-content h2 { color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; }
+    .skill-content h3 { margin-top: 2rem; }
+    .skill-content pre { background: #1a1a2e; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .skill-content code { background: #1a1a2e; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9em; }
+    .skill-content pre code { padding: 0; background: none; }
+    .skill-content ul { margin: 1rem 0; padding-left: 1.5rem; }
+    .skill-content li { margin: 0.5rem 0; }
+    .skill-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .skill-content th, .skill-content td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #333; }
+    .skill-content th { color: var(--accent); }
+    .file-tree { background: #1a1a2e; padding: 1.5rem; border-radius: 8px; font-family: monospace; font-size: 0.9em; }
+    .file-tree .folder { color: var(--accent); }
+    .file-tree .file { color: var(--text-muted); }
+    .badge { display: inline-block; background: var(--accent); color: black; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.8em; font-weight: 600; margin-right: 0.5rem; }
+    .badge-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+    .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .cta-buttons a { display: inline-flex; align-items: center; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-brand">
+      <img src="img/icon.svg" alt="Agent Constitution">
+      Agent Constitution
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="/#how-it-works">How It Works</a>
+      <a href="/#directives">Directives</a>
+      <a href="/#features">Features</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/#download" class="nav-cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<div class="skill-hero">
+  <h1>Agent <span>Skill</span></h1>
+  <p>The skill package that connects your AI agent to Agent Constitution. Constitution checks, secure vault, health sync, and drift testing — all in bash scripts.</p>
+  <div>
+    <span class="badge">OpenClaw</span>
+    <span class="badge-outline badge">bash</span>
+    <span class="badge-outline badge">open source</span>
+  </div>
+</div>
+
+<div class="skill-content">
+
+  <h2>What's Included</h2>
+  
+  <div class="file-tree">
+    <div><span class="folder">agent-constitution/</span></div>
+    <div>&nbsp;&nbsp;├── <span class="file">SKILL.md</span> — Instructions for your agent</div>
+    <div>&nbsp;&nbsp;├── <span class="file">active-rules.json</span> — Synced directives from your iPhone</div>
+    <div>&nbsp;&nbsp;├── <span class="folder">scripts/</span></div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">setup.sh</span> — One-time setup</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">pair.sh</span> — Pair with your iPhone</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">check-constitution.sh</span> — Request approval for actions</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">request-vault.sh</span> — Request sensitive data (Face ID)</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">fetch-health.sh</span> — Read synced health metrics</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">sync-health.sh</span> — Pull health data from relay</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">run-drift-test.sh</span> — Process drift test probes</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <span class="file">heartbeat-sync.sh</span> — Unified heartbeat handler</div>
+    <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── <span class="file">...</span> — Encryption utilities, helpers</div>
+    <div>&nbsp;&nbsp;└── <span class="folder">templates/</span> — Health dashboard template</div>
+  </div>
+
+  <h2>Requirements</h2>
+  
+  <table>
+    <tr><th>Requirement</th><th>Details</th></tr>
+    <tr><td><strong>OpenClaw</strong></td><td>AI agent framework — <a href="https://openclaw.ai">openclaw.ai</a></td></tr>
+    <tr><td><strong>iOS App</strong></td><td>Agent Constitution for iPhone</td></tr>
+    <tr><td><strong>jq</strong></td><td><code>brew install jq</code> (macOS) or <code>apt install jq</code> (Linux)</td></tr>
+    <tr><td><strong>bash</strong></td><td>Version 4+ recommended</td></tr>
+  </table>
+
+  <h2>Quick Start</h2>
+
+  <h3>1. Install the skill</h3>
+  <pre><code>cd $WORKSPACE/skills
+git clone https://github.com/arunrlverma/agent-constitution.git
+bash agent-constitution/scripts/setup.sh</code></pre>
+
+  <h3>2. Pair your iPhone</h3>
+  <p>Open the iOS app → tap "Pair Agent" → get a code like <code>CLAW-A1B2C3D4</code></p>
+  <pre><code>bash skills/agent-constitution/scripts/pair.sh CLAW-A1B2C3D4</code></pre>
+
+  <h3>3. Your agent is ready</h3>
+  <p>The setup script patches your agent's <code>AGENTS.md</code> and <code>HEARTBEAT.md</code> to automatically check directives before restricted actions.</p>
+
+  <h2>Core Scripts</h2>
+
+  <h3>check-constitution.sh</h3>
+  <p>Request approval before a restricted action:</p>
+  <pre><code>bash skills/agent-constitution/scripts/check-constitution.sh \
+  --rule "Ask before sending work emails" \
+  --action "Send email to team@company.com" \
+  --reason "User requested weekly update"
+
+# Exit 0 = approved, Exit 1 = denied/timeout</code></pre>
+
+  <h3>request-vault.sh</h3>
+  <p>Request sensitive data protected by Face ID:</p>
+  <pre><code># Types: identity, payment, ssn, bank_account, otp, custom
+bash skills/agent-constitution/scripts/request-vault.sh payment "Complete checkout"</code></pre>
+
+  <h3>fetch-health.sh</h3>
+  <p>Read synced Apple Health metrics:</p>
+  <pre><code>bash skills/agent-constitution/scripts/fetch-health.sh latest   # Latest metrics
+bash skills/agent-constitution/scripts/fetch-health.sh history  # 14-day history</code></pre>
+
+  <h2>How It Works</h2>
+  
+  <p>The skill connects your agent to the Agent Constitution relay server, which communicates with your iPhone app:</p>
+  
+  <ol>
+    <li><strong>Agent attempts restricted action</strong> — checks <code>active-rules.json</code></li>
+    <li><strong>Directive matches</strong> — calls <code>check-constitution.sh</code></li>
+    <li><strong>Request sent to relay</strong> — push notification to your iPhone</li>
+    <li><strong>You approve/deny</strong> — decision flows back to agent</li>
+    <li><strong>Agent proceeds or stops</strong> — based on your decision</li>
+  </ol>
+
+  <p>All sensitive data (vault, health, constitution checks) is encrypted end-to-end with AES-256-GCM. The relay can't read your data.</p>
+
+  <h2>File Integrity</h2>
+  
+  <p>The skill includes tamper protection. 13 critical files are hash-verified on every heartbeat. If your agent modifies its own directives or scripts, the app detects it immediately.</p>
+
+  <h2>Links</h2>
+
+  <div class="cta-buttons">
+    <a href="https://github.com/arunrlverma/agent-constitution" class="btn btn-primary" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      View on GitHub
+    </a>
+    <a href="/docs.html" class="btn btn-secondary">Full Documentation →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="footer-copy">© 2026 Arun Verma. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/support.html">Support</a>
+      <a href="/security.html">Security</a>
+      <a href="https://github.com/arunrlverma/agent-constitution" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.hamburger').classList.remove('open');
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
